@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #dadce0;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #bdc1c6;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+}
+
+@layer components {
+  .skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 0.375rem;
+  }
+
+  .dark .skeleton {
+    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+    background-size: 200% 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Email HTML content — constrain width, images responsive */
+.email-body img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.email-body table {
+  max-width: 100% !important;
+}
+
+.email-body * {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Safe area support for notched Android/iOS devices */
+.safe-top { padding-top: env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Prevent zoom on input focus — Android Chrome (16px threshold) */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* Standalone PWA mode */
+@media (display-mode: standalone) {
+  body { overscroll-behavior: none; }
+}
